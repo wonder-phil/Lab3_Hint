@@ -46,7 +46,9 @@ public class BackendServer extends ServerResource {
 	  new Server(Protocol.HTTP, 8182, BackendServer.class).start();    
    }
    
-   
+   /*
+    * curl http://localhost:8182
+    */
    @Get  
    public String toString() {  
 	  count++;
@@ -57,6 +59,9 @@ public class BackendServer extends ServerResource {
    }
   
    
+   /*
+    * curl -v -d "Hello=YEAH" -X  POST "http://localhost:8182" -H "Content-type: text/html; charset=UTF-8"
+    */
    @Post
    public Response addScore(Representation r) {
 	   String s;
@@ -74,7 +79,9 @@ public class BackendServer extends ServerResource {
 	       
 	   return response;
    }
-   
+   /*
+    * curl -v -d "Hello=YEAH" -X  PUT "http://localhost:8182" -H "Content-type: text/html; charset=UTF-8"
+    */
    @Put
    public Response updateScore(Representation r) {
        String s;
