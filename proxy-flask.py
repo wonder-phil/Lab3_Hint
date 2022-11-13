@@ -1,16 +1,23 @@
 import requests
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
+#
+# pip3 iinstall flask, requests, flask_cors
+#
+#
 
 #
-# On Windows get the the machine's IP address with iterface ipconfig
-# On *nix get the the machine's IP address with iterface ifconfig
+#
+# On Windows get the the machine's IP address with ipconfig
+# On *nix get the the machine's IP address with iterface config:  ifconfig
 #
 url = 'http://192.168.110.1:8182'
 
 
-
-
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 #
 # 
 # curl http://localhost:5000/get
