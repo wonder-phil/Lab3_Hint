@@ -57,7 +57,6 @@ public class BackendServer extends ServerResource {
 	  json_string = gson.toJson(questionAnswer);
       return  json_string;  // "Question " + Integer.valueOf(count).toString() + ": " +
    }
-  
    
    /*
     * curl -v -d "Hello=YEAH" -X  POST "http://localhost:8182" -H "Content-type: text/html; charset=UTF-8"
@@ -76,15 +75,16 @@ public class BackendServer extends ServerResource {
 	   }
 
 	   Response response = new Response(request);
-	       
 	   return response;
    }
+	
    /*
     * curl -v -d "Hello=YEAH" -X  PUT "http://localhost:8182" -H "Content-type: text/html; charset=UTF-8"
     */
    @Put
    public Response updateScore(Representation r) {
        String s;
+	   
 	try {
 		s = r.getText();
 		System.out.println("s: " + s);
@@ -94,17 +94,11 @@ public class BackendServer extends ServerResource {
 	}
 	
 	Request request = new Request();
-	
 	Response response = new Response(request);
-	
        
     return response;
    }
-   
  
 }
-   
-   // >curl  -d "param1=value1&param2=value2"  -X POST "http://localhost:5000/http://localhost:8182"
-   // "Content-Type: application/json" 
    
  
