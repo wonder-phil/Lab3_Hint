@@ -50,10 +50,10 @@ public class BackendServer extends ServerResource {
     * curl http://localhost:8182
     */
    @Get  
-   public String toString() {  
-	  count++;
+   public String toString() {
 	  count = count % allQuestionsAnswers.size();
 	  QuestionAnswer questionAnswer = allQuestionsAnswers.get(count);
+	  count++;
 	  json_string = gson.toJson(questionAnswer);
       return  json_string;  // "Question " + Integer.valueOf(count).toString() + ": " +
    }
@@ -80,6 +80,10 @@ public class BackendServer extends ServerResource {
 	
    /*
     * curl -v -d "Hello=YEAH" -X  PUT "http://localhost:8182" -H "Content-type: text/html; charset=UTF-8"
+    * 
+    * We can use this PUT to reset the count variable!
+    * 
+    * curl -d "9" -X  PUT "http://localhost:8182" -H "Content-type: text/html; charset=UTF-8"
     */
    @Put
    public Response updateScore(Representation r) {
@@ -88,6 +92,7 @@ public class BackendServer extends ServerResource {
 	try {
 		s = r.getText();
 		System.out.println("s: " + s);
+		count = Integer.valueOf(s).intValue();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
